@@ -1,0 +1,19 @@
+#imgModif img {
+    height: 639px;
+    width: 100%;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center 35%;
+}
+
+#imgModif .carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 20.25rem;
+    background-color:rgba(0, 0, 0, 0.596);
+    left: 15%;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #fff;
+    text-align: center;
+}

@@ -1,0 +1,14 @@
+.cour-titre{
+    
+    padding: 30px;
+    width: 100%;
+    background: cadetblue;
+    color: white;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.accordion-item {
+    border: none;
+}
+

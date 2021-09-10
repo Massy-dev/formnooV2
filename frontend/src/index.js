@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+//import CreateCour from './Components/Pages/CreateCour';
+//import Login from './Components/Authentification/Login';
 import reportWebVitals from './reportWebVitals';
+//import ListCours from './Components/Pages/ListCours';
+import App from './Components/Pages/App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

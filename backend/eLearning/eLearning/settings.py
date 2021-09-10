@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-w&h3q4lgdp9q!+cp@33n3r)oon2wuft#u6e!)akv$m(j1c^rf7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 AUTH_USER_MODEL = 'formnoo.Utilisateur'
 # Application definition
@@ -38,20 +38,32 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
     'corsheaders',
+    'knox',
     'formnoo',
 ]
 
+SITE_ID = 1
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ]
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
 }
 
-CORS_ORIGIN_WHITELIST = (
-    'localhost:3000/'
-)
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', # new
@@ -89,10 +101,15 @@ WSGI_APPLICATION = 'eLearning.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '127.0.0.1',
+        'NAME': 'formnooV2',
+        'USER': 'root',
+        'PASSWORD': '1833production',
+
     }
 }
 
@@ -139,3 +156,4 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#LOGIN_URL = 'login/'

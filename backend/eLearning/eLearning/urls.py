@@ -15,8 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from rest_framework import routers
+from django.conf.urls import url
+
+router = routers.DefaultRouter()
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('formnoo.urls')),
+    path('', include('formnoo.urls')),
+    path('', include(router.urls)),
+    url(r'^rest-auth/', include('rest_auth.urls')),
+    url(r'^rest-auth/registration/', include('rest_auth.registration.urls'))
 ]

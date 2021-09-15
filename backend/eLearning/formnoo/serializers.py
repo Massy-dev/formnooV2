@@ -16,6 +16,7 @@ class CoursSerializer(serializers.ModelSerializer):
             'description',
             'identifiant',
             'createur',
+            'image',
             'date_creation'
             
         )

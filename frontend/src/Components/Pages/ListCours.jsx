@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 //import CreateCour from './CreateCour' 
+//{`/cour-detail/${item.id}`}
 import {
-  BrowserRouter as Router,
+  
   Link,
   
 }from "react-router-dom";
 import { Card, Row, Col, 
-          Button, Container,
+           Container,
           Breadcrumb
          } from 'react-bootstrap'
 //import SingleCours from './SingleCours';
 
 class ListCours extends Component {
   state = {
-    todos: []
+    todos: [],
+    
   };
 
    
@@ -29,11 +31,14 @@ class ListCours extends Component {
     }
     try {
       const res = await fetch('http://127.0.0.1:8000/api/',{ headers }); // fetching the data from api, before the page loaded
+      
       const todos = await res.json();
-      console.log(todos);
+      
       this.setState({
-        todos
+        todos,
+        
       });
+      console.log(this.state.todos)
     } catch (e) {
       console.log(e);
     }
@@ -51,17 +56,19 @@ class ListCours extends Component {
           
           <Breadcrumb.Item active>Cours</Breadcrumb.Item>
         </Breadcrumb>
-          <Router>
+          
 
             <Row xs={1} md={2} className="g-4">
               {this.state.todos.map(item => (
                 <Col key={item.id}>
                   <Card >
-                    <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg" />
+                    <Card.Img variant="top" src={item.image}/>
                     <Card.Body>
                       <Card.Title>{item.titre}</Card.Title>
                       <Card.Text>{item.description.substring(0, 150)}</Card.Text>
-                      <Link to={`/cour-detail/${item.id}`}><Button variant="primary">S'inscrire</Button></Link>
+                      
+                      <Link to={`/cour-detail/${item.id}`}>S'inscrire</Link>
+                      
                     </Card.Body>
                   </Card>
                 </Col>
@@ -69,7 +76,7 @@ class ListCours extends Component {
               ))}
               
             </Row>
-          </Router>
+          
         </Container>
       </>
     );

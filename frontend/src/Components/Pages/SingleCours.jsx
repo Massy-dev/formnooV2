@@ -30,7 +30,8 @@ class SingleCours extends Component {
   async componentDidMount() {
     
 
-    const id = this.props.params;
+    const id = this.props.match.params.id;
+    console.log(id)
     
         
     var token = localStorage.getItem('token');
@@ -83,8 +84,8 @@ class SingleCours extends Component {
           <>
           <div>
             <Breadcrumb>
-              <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-              <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
+              <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+              <Breadcrumb.Item href="/liste-cours">
                 Cours 
               </Breadcrumb.Item>
               <Breadcrumb.Item active>{this.state.idDetail.titre}</Breadcrumb.Item>
@@ -102,7 +103,8 @@ class SingleCours extends Component {
                           {this.state.chaps.map(item => (
                             <div id="borders">
                               <Accordion.Item eventKey={item.identifiant}>
-                                <Accordion.Header><h1>{item.titre}</h1></Accordion.Header>
+                                <Accordion.Header><h1><b>{item.titre}</b></h1></Accordion.Header>
+                                <hr/>
                                   
                                   <Accordion.Body>
                                   {this.state.lesson.filter(chap => chap.chapitre === item.id).map(less => (
@@ -112,7 +114,7 @@ class SingleCours extends Component {
                                         <div>
 
                                          <Accordion.Item eventKey={less.identifiant}>
-                                            <Accordion.Header><h3>{less.titre}</h3></Accordion.Header>
+                                            <Accordion.Header><h3>{less.titre}</h3></Accordion.Header> <hr/>
                                               
                                               <Accordion.Body>
                                               <h4>{item.titre}</h4>

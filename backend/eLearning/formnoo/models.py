@@ -43,6 +43,7 @@ class ObjetPeda(models.Model):
     categorie= models.ForeignKey(Categorie, blank=True, null=True, on_delete=models.CASCADE,related_name='+', )
     titre = models.CharField(max_length=200)
     description = models.TextField()
+    image = models.ImageField(upload_to='photos/')
     date_creation = models.DateTimeField(blank=True, default=timezone.now)
     identifiant = models.CharField(max_length=50, blank=True)
 
